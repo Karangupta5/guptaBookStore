@@ -42,13 +42,13 @@ public class BookController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @GetMapping("/get{id}")
+    @GetMapping("id/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) throws BookNotFoundException {
         Book book=bookService.getBookById(id);
         return ResponseEntity.ok(book);
     }
 
-    @PutMapping("/update{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<BookResponse> updateBook(@PathVariable Long id, @Valid @RequestBody UpdateBookRequest request) throws InvalidPriceException{
         Book updatedBook=bookService.updateBook(
                 id,
@@ -62,7 +62,7 @@ public class BookController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/updateStock{id}")
+    @PutMapping("/updateStock/{id}")
     public ResponseEntity<BookResponse> updateBookStock(@PathVariable Long id, @Valid @RequestBody UpdateStockRequest request) throws BookNotFoundException {
 
         Book updatedBook=bookService.updateBookStock(id,request.getStock());
@@ -72,7 +72,7 @@ public class BookController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("get/{isbn}")
+    @GetMapping("isbn/{isbn}")
     public ResponseEntity<Book> getBookByIsbn(@PathVariable String isbn){
         Book book=bookService.getBookByIsbn(isbn);
         return ResponseEntity.ok(book);

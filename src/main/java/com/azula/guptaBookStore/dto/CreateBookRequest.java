@@ -15,7 +15,7 @@ public class CreateBookRequest {
     @NotBlank(message = "ISBN must not be empty")
     private String isbn;
 
-    @NotBlank(message = "Price is compulsory")
+    @NotNull
     @Min(value = 1, message = "Price must be greater than 0")
     private double price;
 
