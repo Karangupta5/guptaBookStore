@@ -1,11 +1,25 @@
 package com.azula.guptaBookStore.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import org.antlr.v4.runtime.misc.NotNull;
+
 public class CreateBookRequest {
 
+    @NotBlank(message = "Title must not be empty")
     private String title;
+
+    @NotBlank(message = "Author must not be empty")
     private String author;
+
+    @NotBlank(message = "ISBN must not be empty")
     private String isbn;
+
+    @NotBlank(message = "Price is compulsory")
+    @Min(value = 1, message = "Price must be greater than 0")
     private double price;
+
+    @Min(value = 0,message = "Stock cannot be negative")
     private int stock;
 
     public CreateBookRequest(){}

@@ -27,14 +27,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book updateBook(long id, Book updatedBook) throws InvalidPriceException {
+    public Book updateBook(long id,String title,String author,Double price) throws InvalidPriceException {
         Book book=bookRepository.getById(id);
 
-        book.setTitle(updatedBook.getTitle());
-        book.setAuthor(updatedBook.getAuthor());
-        if(updatedBook.getPrice()<=0) throw new InvalidPriceException("Price must be greater than 0");
-        book.setPrice(updatedBook.getPrice());
-        book.setStock(updatedBook.getStock());
+        book.setTitle(title);
+        book.setAuthor(author);
+        if(price<=0) throw new InvalidPriceException("Price must be greater than 0");
+        book.setPrice(price);
 
         return bookRepository.save(book);
     }

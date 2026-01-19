@@ -1,9 +1,17 @@
 package com.azula.guptaBookStore.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+
 public class UpdateBookRequest {
 
+    @NotBlank(message = "Title must not be empty")
     private String title;
+
+    @NotBlank(message = "Author must not be empty")
     private String author;
+
+    @Min(value = 1,message = "Price must be greater than 0")
     private double price;
 
     public UpdateBookRequest() {}
