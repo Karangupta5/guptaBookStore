@@ -42,7 +42,7 @@ public class BookServiceImpl implements BookService {
     public Book updateBookStock(long id, int newStock) throws BookNotFoundException {
         if(newStock<0) throw  new RuntimeException("Stock amount must be positive");
         Book book=bookRepository.getById(id);
-        if(book==null) throw new BookNotFoundException("Invalid id or Book Not Found");
+        if(book==null) throw new BookNotFoundException("Book Not Found with id = "+id );
         book.setStock(book.getStock()+newStock);
         return book;
     }
@@ -50,7 +50,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book getBookById(long id) throws BookNotFoundException {
         Book book=bookRepository.getById(id);
-        if(book==null) throw new BookNotFoundException("Invalid id or Book Not Found");
+        if(book==null) throw new BookNotFoundException("Book Not Found with id = "+id);
         return book;
     }
 
@@ -67,7 +67,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public void deleteBook(long id) throws BookNotFoundException {
         Book book=bookRepository.getById(id);
-        if(book==null) throw new BookNotFoundException("Invalid id or Book Not Found");
+        if(book==null) throw new BookNotFoundException("Book Not Found with id = "+ id);
         bookRepository.delete(book);
     }
 }

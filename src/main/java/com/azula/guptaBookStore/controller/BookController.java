@@ -38,7 +38,7 @@ public class BookController {
         Book savedBook = bookService.addBook(book);
 
         BookResponse response = ResponseMapper.mapper(savedBook);
-       
+
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 

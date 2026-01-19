@@ -11,7 +11,7 @@ public interface BookService {
 
     Book addBook(Book book) throws DuplicateIsbnException;
 
-    Book updateBook(long id,Book updatedBook) throws InvalidPriceException;
+    Book updateBook(long id,String title,String author,Double price) throws InvalidPriceException;
 
     Book updateBookStock(long id,int newStock) throws BookNotFoundException;
 
