@@ -15,7 +15,7 @@ public interface BookService {
 
     Book updateBookStock(long id,int newStock) throws BookNotFoundException;
 
-    Book getBookById(long id) throws BookNotFoundException;
+    Book getBookById(Long id) throws BookNotFoundException;
 
     Book getBookByIsbn(String isbn);
 

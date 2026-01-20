@@ -43,9 +43,9 @@ public class BookController {
     }
 
     @GetMapping("id/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Long id) throws BookNotFoundException {
+    public ResponseEntity<BookResponse> getBookById(@PathVariable Long id) throws BookNotFoundException {
         Book book=bookService.getBookById(id);
-        return ResponseEntity.ok(book);
+        return ResponseEntity.ok(ResponseMapper.mapper(book));
     }
 
     @PutMapping("/update/{id}")
